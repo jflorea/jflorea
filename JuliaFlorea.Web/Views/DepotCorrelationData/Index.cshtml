@@ -1,0 +1,38 @@
+﻿
+@model List<JuliaFlorea.Domain.CorrelationService.DepotCorrelationData>
+
+
+@{
+    ViewBag.Title = "Depot Units";
+    var headerCellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center;";
+    var cellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center; vertical-align: middle;";
+    var titleStyle = "text-align: center;";
+}
+
+
+
+<h2 style="@titleStyle">@ViewBag.Title</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="@headerCellStyle">Depot Name</th>
+            <th style="@headerCellStyle">Country Name</th>
+            <th style="@headerCellStyle">Drug Unit Id</th>
+            <th style="@headerCellStyle">Drug Type Name</th>
+            <th style="@headerCellStyle">Pick Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td style="@cellStyle">@data.DepotName</td>
+                <td style="@cellStyle">@data.CountryName</td>
+                <td style="@cellStyle">@data.DrugUnitId</td>
+                <td style="@cellStyle">@data.DrugTypeName</td>
+                <td style="@cellStyle">@data.PickNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>

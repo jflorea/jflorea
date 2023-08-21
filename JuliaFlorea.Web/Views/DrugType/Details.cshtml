@@ -1,0 +1,34 @@
+﻿@model JuliaFlorea.DataModel.DrugType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DrugType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DrugTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DrugTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WeightInPounds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WeightInPounds)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DrugTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

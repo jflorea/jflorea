@@ -1,0 +1,72 @@
+﻿@model JuliaFlorea.DataModel.DrugUnit
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DrugUnit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PickNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManufacturingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManufacturingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Depot.DepotName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Depot.DepotName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DrugType.DrugTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DrugType.DrugTypeName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

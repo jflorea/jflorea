@@ -1,0 +1,55 @@
+﻿@model JuliaFlorea.DataModel.Site
+
+@{
+    ViewData["Title"] = "Request Drugs";
+    var headerCellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center;";
+    var cellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center; vertical-align: middle;";
+    var titleStyle = "text-align: center;";
+}
+
+<h2 >Request Drugs for @Model.SiteName</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Request Drugs</h3>
+        @using (Html.BeginForm("RequestDrugs", "Site", new { siteId = Model.SiteId }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.Label("Drug Type:")
+                @Html.DropDownList("drugCode", (SelectList)ViewBag.DrugTypeList, "Select a Drug Type", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Quantity:")
+                @Html.TextBox("quantity", null, new { @class = "form-control", type = "number", min = "1" })
+            </div>
+            <button type="submit" class="btn btn-primary">Request Drugs</button>
+        }
+    </div>
+</div>
+
+@if (ViewBag.RequestedDrugUnits != null && ViewBag.RequestedDrugUnits.Count > 0)
+{
+    <h3 style="@titleStyle">Requested Drugs Details</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="@headerCellStyle">Drug Unit ID</th>
+                <th style="@headerCellStyle">Pick Number</th>
+                <th style="@headerCellStyle">Depot Name</th>
+                <th style="@headerCellStyle">Drug Type Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var drugUnit in ((List<JuliaFlorea.DataModel.DrugUnit>)ViewBag.RequestedDrugUnits).Take((int)ViewBag.RequestedQuantity))
+            {
+                <tr>
+                    <td style="@cellStyle">@drugUnit.DrugUnitId</td>
+                    <td style="@cellStyle">@drugUnit.PickNumber</td>
+                    <td style="@cellStyle">@(drugUnit.Depot != null ? drugUnit.Depot.DepotName : "Not Associated")</td>
+                    <td style="@cellStyle">@(drugUnit.DrugType != null ? drugUnit.DrugType.DrugTypeName : "Unknown Type")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

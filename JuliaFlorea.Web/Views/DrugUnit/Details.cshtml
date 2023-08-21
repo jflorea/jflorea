@@ -1,0 +1,66 @@
+﻿@model JuliaFlorea.DataModel.DrugUnit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DrugUnit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PickNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManufacturingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManufacturingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Depot.DepotName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Depot.DepotName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DrugType.DrugTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DrugType.DrugTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DrugUnitId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

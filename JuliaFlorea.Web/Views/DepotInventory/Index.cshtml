@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Depot Inventory";
+    var headerCellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center;";
+    var cellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center; vertical-align: middle;";
+    var titleStyle = "text-align: center;";
+}
+
+<h2 style="@titleStyle">Depot Inventory</h2>
+
+<div class="row">
+    <div class="col-md-6">
+
+        <h3>Associate Drugs</h3>
+        @using (Html.BeginForm("Associate", "DepotInventory", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.Label("Depot:")
+                @Html.DropDownList("associateDepotId", new SelectList(ViewBag.Depots, "DepotId", "DepotName"), "Select a Depot", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Start Pick Number:")
+                @Html.TextBox("associateStartPickNumber", null, new { @class = "form-control", type = "number" })
+            </div>
+            <div class="form-group">
+                @Html.Label("End Pick Number:")
+                @Html.TextBox("associateEndPickNumber", null, new { @class = "form-control", type = "number" })
+            </div>
+            <button type="submit" class="btn btn-primary">Associate</button>
+        }
+    </div>
+
+    <div class="col-md-6">
+        <h3>Disassociate Drugs</h3>
+        @using (Html.BeginForm("Disassociate", "DepotInventory", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.Label("Start Pick Number:")
+                @Html.TextBox("disassociateStartPickNumber", null, new { @class = "form-control", type = "number" })
+            </div>
+            <div class="form-group">
+                @Html.Label("End Pick Number:")
+                @Html.TextBox("disassociateEndPickNumber", null, new { @class = "form-control", type = "number" })
+            </div>
+            <button type="submit" class="btn btn-danger">Disassociate</button>
+        }
+    </div>
+</div>
+
+@if (ViewBag.DrugUnits != null)
+{
+    <h3>Drug Units</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="@headerCellStyle">ID</th>
+                <th style="@headerCellStyle">Pick Number</th>
+                <th style="@headerCellStyle">Depot Name</th>
+                <th style="@headerCellStyle">Drug Type Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var drugUnit in ViewBag.DrugUnits)
+            {
+                <tr>
+                    <td style="@cellStyle">@drugUnit.DrugUnitId</td>
+                    <td style="@cellStyle">@drugUnit.PickNumber</td>
+                    <td style="@cellStyle">@(drugUnit.Depot != null ? drugUnit.Depot.DepotName : "Not Associated")</td>
+                    <td style="@cellStyle">@(drugUnit.DrugType != null ? drugUnit.DrugType.DrugTypeName : "Unknown Type")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<JuliaFlorea.DataModel.DrugUnit>
+
+@{
+    ViewBag.Title = "Index";
+    var headerCellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center;";
+    var cellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center; vertical-align: middle;";
+    var titleStyle = "text-align: center;";
+    var buttonStyle = "background-color: #836096; color: white; border: none; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 12px; margin: 2px;";
+}
+
+
+<h2 style="@titleStyle">Drug Units</h2>
+
+<p>
+    <a href="@Url.Action("Create")" style="@buttonStyle">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.PickNumber)
+        </th>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.ManufacturingDate)
+        </th>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </th>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.Depot.DepotName)
+        </th>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.DrugType.DrugTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="@cellStyle">
+                @Html.DisplayFor(modelItem => item.PickNumber)
+            </td>
+            <td style="@cellStyle">
+                @Html.DisplayFor(modelItem => item.ManufacturingDate)
+            </td>
+            <td style="@cellStyle">
+                @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+            <td style="@cellStyle">
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td style="@cellStyle">
+                @Html.DisplayFor(modelItem => item.Depot.DepotName)
+            </td>
+            <td style="@cellStyle">
+                @Html.DisplayFor(modelItem => item.DrugType.DrugTypeName)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.DrugUnitId })" style="@buttonStyle">Edit</a>
+                <a href="@Url.Action("Details", new { id = item.DrugUnitId })" style="@buttonStyle">Details</a>
+                <a href="@Url.Action("Delete", new { id = item.DrugUnitId })" style="@buttonStyle">Delete</a>
+                
+        </tr>
+    }
+
+</table>

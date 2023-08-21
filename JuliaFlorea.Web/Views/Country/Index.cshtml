@@ -1,0 +1,37 @@
+﻿@model IEnumerable<JuliaFlorea.DataModel.Country>
+
+@{
+    ViewBag.Title = "Countries";
+    var headerCellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center;";
+    var cellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center; vertical-align: middle;";
+    var titleStyle = "text-align: center;";
+    var buttonStyle = "background-color: #836096; color: white; border: none; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 12px; margin: 2px;";
+}
+
+<h2 style="@titleStyle">Countries</h2>
+
+<p>
+    <a href="@Url.Action("Create")" style="@buttonStyle">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.CountryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="@cellStyle">
+            @Html.DisplayFor(modelItem => item.CountryName)
+        </td>
+        <td >
+            <a href="@Url.Action("Edit", new { id = item.CountryId })" style="@buttonStyle">Edit</a> 
+            <a href="@Url.Action("Details", new { id = item.CountryId })" style="@buttonStyle">Details</a> 
+            <a href="@Url.Action("Delete", new { id = item.CountryId })" style="@buttonStyle">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

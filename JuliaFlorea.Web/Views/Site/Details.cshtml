@@ -1,0 +1,37 @@
+﻿@model JuliaFlorea.DataModel.Site
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Site</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country.CountryName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Country.CountryName)
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SiteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<JuliaFlorea.DataModel.DrugType>
+
+@{
+    ViewBag.Title = "Index";
+    var headerCellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center;";
+    var cellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center; vertical-align: middle;";
+    var titleStyle = "text-align: center;";
+    var buttonStyle = "background-color: #836096; color: white; border: none; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 12px; margin: 2px;";
+}
+
+<h2 style="@titleStyle">Drug Types</h2>
+
+<p>
+    <a href="@Url.Action("Create")" style="@buttonStyle">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.DrugTypeName)
+        </th>
+        <th style="@headerCellStyle">
+            @Html.DisplayNameFor(model => model.WeightInPounds)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td style="@cellStyle">
+        @Html.DisplayFor(modelItem => item.DrugTypeName)
+    </td>
+    <td style="@cellStyle">
+        @Html.DisplayFor(modelItem => item.WeightInPounds)
+    </td>
+    <td>
+       
+        <a href="@Url.Action("Edit", new { id = item.DrugTypeId })" style="@buttonStyle">Edit</a>
+        <a href="@Url.Action("Details", new { id = item.DrugTypeId })" style="@buttonStyle">Details</a>
+        <a href="@Url.Action("Delete", new { id = item.DrugTypeId })" style="@buttonStyle">Delete</a>
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .jumbotron {
+        background-color: #4D3C77;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-purple {
+        color: #836096;
+    }
+
+    .btn-secondary {
+        background-color: #836096;
+        color: white;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .btn-secondary:hover {
+            background-color: #6b7c8d;
+        }
+</style>
+
+<div class="jumbotron  text-white text-center py-5" >
+    <h1 class="display-4">Drug Inventory Management System</h1>
+    <p class="lead">An ASP.NET Web Application for Managing Drugs in Clinical Trials</p>
+    <a href="https://asp.net" class="btn btn-primary btn-lg" style="background-color: #6b7c8d;">Learn more &raquo;</a>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card bg-white mb-4">
+            <div class="card-body">
+                <h2 class="card-title text-purple">Depot Units</h2>
+                <p class="card-text">Data regarding all the depots registered in the database</p>
+                <a class="btn btn-secondary" href="/DepotCorrelationData">Learn more &raquo;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-white mb-4">
+            <div class="card-body">
+                <h2 class="card-title text-purple">Grouped Drug Units</h2>
+                <p class="card-text">Drug Units listed by their Drug Type</p>
+                <a class="btn btn-secondary" href="/ToGroupedDrugUnits/GroupedDrugUnits">Learn more &raquo;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-white mb-4">
+            <div class="card-body">
+                <h2 class="card-title text-purple">Depot Inventory</h2>
+                <p class="card-text">Drug Units Association with the Depots</p>
+                <a class="btn btn-secondary" href="/DepotInventory">Learn more &raquo;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-white mb-4">
+            <div class="card-body">
+                <h2 class="card-title text-purple">Drug Unit Weights</h2>
+                <p class="card-text">Weight of Drug Units of each Depot</p>
+                <a class="btn btn-secondary" href="/Weight">Learn more &raquo;</a>
+            </div>
+        </div>
+    </div>
+</div>

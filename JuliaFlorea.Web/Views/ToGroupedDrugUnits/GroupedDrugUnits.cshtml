@@ -1,0 +1,43 @@
+﻿@model Dictionary<string, List<JuliaFlorea.DataModel.DrugUnit>>
+
+@{
+    ViewBag.Title = "Grouped Drug Units";
+    var tableStyle = "border-collapse: collapse; width: 80%; margin: auto;";
+    var headerCellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center;";
+    var cellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center; vertical-align: middle;";
+    var titleStyle = "text-align: center;";
+}
+
+<h2 style="@titleStyle">Grouped Drug Units</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table style="@tableStyle">
+        <tr>
+            <th style="@headerCellStyle">Drug Type ID</th>
+            <th style="@headerCellStyle">Drug Type Name</th>
+            <th style="@headerCellStyle">Drug Unit ID</th>
+            <th style="@headerCellStyle">Pick Number</th>
+        </tr>
+
+        @foreach (var group in Model)
+        {
+            foreach (var drugUnit in group.Value)
+            {
+                <tr>
+                    @if (group.Value.IndexOf(drugUnit) == 0)
+                    {
+                        <td rowspan="@group.Value.Count" style="@cellStyle">@group.Key</td>
+                        <td rowspan="@group.Value.Count" style="@cellStyle">@drugUnit.DrugType.DrugTypeName</td>
+                    }
+                    <td style="@cellStyle">@drugUnit.DrugUnitId</td>
+                    <td style="@cellStyle">@drugUnit.PickNumber</td>
+                </tr>
+            }
+        }
+    </table>
+}
+else
+{
+    <p>No grouped drug units available.</p>
+}

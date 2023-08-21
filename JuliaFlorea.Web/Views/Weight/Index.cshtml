@@ -1,0 +1,39 @@
+﻿@model List<JuliaFlorea.DataModel.Depot>
+
+@{
+    ViewBag.Title = "Drug Unit Weights";
+    var headerCellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center;";
+    var cellStyle = "border: 1px solid #836096; border-color: #836096; padding: 8px; text-align: center; vertical-align: middle;";
+    var titleStyle = "text-align: center;";
+}
+
+<h2 style="@titleStyle">@ViewBag.Title</h2>
+
+@foreach (var depot in Model)
+{
+    <h2 >@depot.DepotName</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="@headerCellStyle">Drug Type</th>
+                <th style="@headerCellStyle">Weight in Pounds</th>
+                <th style="@headerCellStyle">Total Weight in kg</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var drugUnit in depot.DrugUnits)
+            {
+            <tr>
+                <td style="@cellStyle">@drugUnit.DrugType.DrugTypeName</td>
+                <td style="@cellStyle">@drugUnit.DrugType.WeightInPounds</td>
+                <td style="@cellStyle">@string.Format("{0:F2}", drugUnit.DrugType.WeightInPounds / 2.2)</td>
+            </tr>
+            }
+        <tr>
+            <td style="@cellStyle"><strong>Total Weight for @depot.DepotName (kg)</strong></td>
+            <td style="@cellStyle"></td>
+            <td style="@cellStyle"><strong>@string.Format("{0:F2}", depot.DrugUnits.Sum(du => du.DrugType.WeightInPounds) / 2.2)</strong></td>
+        </tr>
+        </tbody>
+    </table>
+}
